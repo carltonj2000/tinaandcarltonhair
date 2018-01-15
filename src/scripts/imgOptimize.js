@@ -22,7 +22,7 @@ images.forEach(fileInfo => {
     : `convert ${fin} -sampling-factor 4:2:0 -strip -resize 1600x1200 -quality 85 -interlace JPEG -colorspace sRGB ${fopt}`;
   const cmd2 = `ln -s ${fopt} ${fln}`;
   // run cmd1 to optimize images, then cmd2 to link them, or chain them in array
-  [cmd1].forEach(cmd => {
+  [cmd1, cmd2].forEach(cmd => {
     console.log(cmd);
     exec(cmd, (error, stdout, stderr) => {
       if (error) {
